@@ -24,6 +24,8 @@ export class ShopLayoutComponent implements OnInit {
 
   ngOnInit() {
     this.subscribeProductData();
+    this.handleLeftChevronTouchEvent();
+    this.handleRightChevronTouchEvent();
   }
 
   subscribeProductData() {
@@ -68,5 +70,51 @@ export class ShopLayoutComponent implements OnInit {
   // Optional: Stop scrolling if the mouse leaves the button area
   stopScrollOnMouseLeave() {
     this.stopScroll();
+  }
+
+  handleLeftChevronTouchEvent() {
+    let button = document.getElementById('left-chevron');
+
+    button?.addEventListener('touchstart', (event) => {
+      if (this.isScrolling) return; // Avoid multiple intervals
+      this.isScrolling = true;
+      this.scrollInterval = setInterval(() => {
+        const scrollableDiv = document.querySelector(
+          '.product-list'
+        ) as HTMLElement;
+        scrollableDiv.scrollLeft -= 5; // Adjust speed by changing the value
+      }, 5); // Scroll every 10ms
+    });
+
+    button?.addEventListener('touchend', (event) => {
+      this.stopScroll();
+    });
+
+    button?.addEventListener('touchmove', (event) => {
+      this.stopScroll();
+    });
+  }
+
+  handleRightChevronTouchEvent() {
+    let button = document.getElementById('right-chevron');
+
+    button?.addEventListener('touchstart', (event) => {
+      if (this.isScrolling) return;
+      this.isScrolling = true;
+      this.scrollInterval = setInterval(() => {
+        const scrollableDiv = document.querySelector(
+          '.product-list'
+        ) as HTMLElement;
+        scrollableDiv.scrollLeft += 5; // Adjust speed by changing the value
+      }, 5); // Scroll every 10ms
+    });
+
+    button?.addEventListener('touchend', (event) => {
+      this.stopScroll();
+    });
+
+    button?.addEventListener('touchmove', (event) => {
+      this.stopScroll();
+    });
   }
 }
