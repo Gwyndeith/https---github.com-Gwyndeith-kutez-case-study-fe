@@ -1,0 +1,13 @@
+<div class="list-container">
+  <product-card
+    style="
+      min-width: 15%;
+      min-height: 350px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    "
+    *ngFor="let product of productList"
+    [product]="product"
+  ></product-card>
+</div>

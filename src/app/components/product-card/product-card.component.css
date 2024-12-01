@@ -1,0 +1,153 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+.product-card-container {
+  min-height: 500px;
+  min-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.color-option-list-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  height: 25%;
+}
+
+.product-image {
+  object-fit: cover;
+  max-width: 300px;
+  max-height: 300px;
+  border-radius: 20px;
+}
+
+.color-option-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  max-height: 50%;
+}
+
+.product-yellow-option {
+  border-radius: 50%;
+  background-color: rgba(230, 202, 151, 0.4);
+  margin: auto;
+  max-width: 30%;
+  --mdc-radio-selected-icon-color: rgba(230, 202, 151, 0.4);
+  --mdc-radio-selected-hover-icon-color: rgba(230, 202, 151, 0.4);
+  --mdc-radio-selected-focus-icon-color: rgba(230, 202, 151, 0.4);
+  --mat-radio-ripple-color: rgba(230, 202, 151, 0.4);
+  --mat-radio-checked-ripple-color: rgba(230, 202, 151, 0.4);
+  --mdc-radio-selected-pressed-icon-color: rgba(230, 202, 151, 0.4);
+  --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0);
+  --mdc-radio-unselected-hover-icon-color: rgba(0, 0, 0, 0);
+  --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0);
+}
+
+.mat-radio-button.mat-radio-checked .mat-radio-inner {
+  box-shadow: 0 0 10px 3px rgba(230, 202, 151, 0.4);
+}
+
+.product-rose-option {
+  border-radius: 50%;
+  background-color: rgba(225, 164, 169, 0.4);
+  margin: auto;
+  max-width: 30%;
+  --mdc-radio-selected-icon-color: rgba(225, 164, 169, 0.4);
+  --mdc-radio-selected-hover-icon-color: rgba(225, 164, 169, 0.4);
+  --mdc-radio-selected-focus-icon-color: rgba(225, 164, 169, 0.4);
+  --mat-radio-ripple-color: rgba(225, 164, 169, 0.4);
+  --mat-radio-checked-ripple-color: rgba(225, 164, 169, 0.4);
+  --mdc-radio-selected-pressed-icon-color: rgba(225, 164, 169, 0.4);
+  --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0);
+  --mdc-radio-unselected-hover-icon-color: rgba(0, 0, 0, 0);
+  --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0);
+}
+
+.product-white-option {
+  border-radius: 50%;
+  background-color: rgba(217, 217, 217, 0.4);
+  margin: auto;
+  max-width: 30%;
+  --mdc-radio-selected-icon-color: rgba(217, 217, 217, 0.4);
+  --mdc-radio-selected-hover-icon-color: rgba(217, 217, 217, 0.4);
+  --mdc-radio-selected-focus-icon-color: rgba(217, 217, 217, 0.4);
+  --mat-radio-ripple-color: rgba(217, 217, 217, 0.4);
+  --mat-radio-checked-ripple-color: rgba(217, 217, 217, 0.4);
+  --mdc-radio-selected-pressed-icon-color: rgba(217, 217, 217, 0.4);
+  --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0);
+  --mdc-radio-unselected-hover-icon-color: rgba(0, 0, 0, 0);
+  --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0);
+}
+
+::ng-deep .mdc-radio {
+  width: 16px;
+}
+
+.product-yellow-option-button {
+  min-width: 25%;
+  max-height: 30px;
+  border-radius: 50%;
+  background-color: rgba(230, 202, 151, 0.4);
+}
+
+.product-rose-option-button {
+  min-width: 25%;
+  max-height: 30px;
+  border-radius: 50%;
+  background-color: rgba(225, 164, 169, 0.4);
+}
+
+.product-white-option-button {
+  min-width: 25%;
+  max-height: 30px;
+  border-radius: 50%;
+  background-color: rgba(217, 217, 217, 0.4);
+}
+
+.rate {
+  display: inline-block;
+  border: 0;
+  max-width: 50.5%;
+  padding: 0;
+  margin: 0;
+}
+/* Hide radio */
+.rate > input {
+  display: none;
+}
+/* Order correctly by floating highest to the right */
+.rate > label {
+  float: right;
+}
+/* The star of the show */
+.rate > label:before {
+  display: inline-block;
+  font-size: 2rem;
+  padding: 0.3rem 0.2rem;
+  margin: 0;
+  cursor: pointer;
+  font-family: FontAwesome;
+  content: "\f005 "; /* full star */
+}
+
+/* Half star trick */
+.rate .half:before {
+  content: "\f089 "; /* half star no outline */
+  position: absolute;
+  padding-right: 0;
+}
+/* Click + hover color */
+input:checked ~ label, /* color current and previous stars on checked */
+label:hover, label:hover ~ label {
+  color: rgba(246, 213, 168, 1);
+} /* color previous stars on hover */
+
+/* Hover highlights */
+input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ {
+  color: rgba(246, 213, 168, 1);
+}

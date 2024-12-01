@@ -1,0 +1,21 @@
+.page-layout {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+  padding: 0 4rem;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  min-width: 100%;
+}
+
+.title-container {
+  margin: 100px;
+}
