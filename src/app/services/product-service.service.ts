@@ -17,18 +17,21 @@ export class ProductService {
   public $goldPrice = this.goldPriceByWeightSubject.asObservable();
 
   constructor(private http: HttpClient) {
+    this.getGoldPricePerGramData();
+    this.getAllProductData();
+  }
+
+  getGoldPricePerGramData() {
     this.http
       .get('https://data-asg.goldprice.org/dbXRates/USD')
       .subscribe((result: any) => {
-        console.log(result);
-
         this.goldPriceByWeightSubject.next(result.items[0].xauPrice / 31.1035);
       });
+  }
 
+  getAllProductData() {
     this.http.get(this.GET_ALL_PRODUCTS_URL_SPRING).subscribe({
       next: (response: any) => {
-        console.log(response);
-
         this.$goldPrice.subscribe((goldPrice) => {
           response.forEach((element: any) => {
             element['price'] =

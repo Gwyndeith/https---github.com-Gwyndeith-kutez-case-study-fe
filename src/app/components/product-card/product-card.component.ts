@@ -25,16 +25,12 @@ export class ProductCardComponent implements OnInit {
     let productImageList: any[] = [];
     let imageKeys = Object.keys(this.product.images);
     let imageValues = Object.values(this.product.images);
-    console.log(this.product.images);
-    console.log(imageKeys);
-    console.log(imageValues);
     imageKeys.forEach((imageKey, index) => {
       productImageList.push({
         [imageKey]: imageValues[index],
         color: imageKey,
       });
     });
-    console.log(productImageList);
     this.product.images = productImageList;
     this.selectedImageURL = Object.values(productImageList[0])[0] as string;
 
@@ -60,7 +56,6 @@ export class ProductCardComponent implements OnInit {
     //   'selected'
     // );
 
-    // console.log(this.product.productID * 3 + index - 3);
     this.selectedImageURL = Object.values(selectedProductColor)[0];
   }
 }
