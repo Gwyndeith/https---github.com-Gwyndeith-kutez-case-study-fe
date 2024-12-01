@@ -18,14 +18,11 @@ export class ProductService {
 
   constructor(private http: HttpClient) {
     this.http
-      .get(
-        `https://api.metalpriceapi.com/v1/latest?api_key=${environment.GOLD_PRICE_API_KEY}&base=USD&currencies=EUR,XAU,XAG`
-      )
+      .get('https://data-asg.goldprice.org/dbXRates/USD')
       .subscribe((result: any) => {
         console.log(result);
 
-        // USDXAU is given for 1 ons of gold, 1 ons = 31.1035 grams
-        this.goldPriceByWeightSubject.next(result.rates.USDXAU / 31.1035);
+        this.goldPriceByWeightSubject.next(result.items[0].xauPrice / 31.1035);
       });
 
     this.http.get(this.GET_ALL_PRODUCTS_URL_SPRING).subscribe({
