@@ -29,7 +29,8 @@ export class ProductService {
 
         this.$goldPrice.subscribe((goldPrice) => {
           response.forEach((element: any) => {
-            element['price'] = element.weight * goldPrice;
+            element['price'] =
+              (element.popularityScore + 1) * element.weight * goldPrice;
             element['rating'] = +(
               Math.round(((element.popularityScore * 5.0) / 100.0) * 2) / 2
             ).toFixed(1);
