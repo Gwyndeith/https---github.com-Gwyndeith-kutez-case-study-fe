@@ -22,25 +22,30 @@
         (change)="changeProductSelectedColor(productColor, i)"
       />
     </mat-radio-group>
-    <!-- <div class="color-option-list">
-      <button
-        mat-button
-        matRipple
-        *ngFor="let productColor of product.images; let i = index"
-        [ngClass]="{
-          'product-yellow-option-button': productColor.color === 'yellow',
-          'product-white-option-button': productColor.color === 'white',
-          'product-rose-option-button': productColor.color === 'rose'
-        }"
-        class="color-option-button"
-        [matRippleColor]="'rgba(0, 0, 0, 0.3)'"
-        (click)="changeProductSelectedColor(productColor, i)"
-      ></button>
-    </div> -->
   </div>
   <a style="font-family: 'Avenir'; font-size: 12px">{{
     selectedColor + " Gold"
   }}</a>
+  <div class="rating-container">
+    <star-rating
+      [starType]="'svg'"
+      [rating]="product.rating"
+      [showHalfStars]="true"
+      [speed]="'slow'"
+      [readOnly]="true"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        flex-shrink: 1;
+      "
+      [staticColor]="'ok'"
+      #workaround
+    />
+    <a style="font-family: 'Avenir'; font-size: 14px">{{
+      product.rating + "/5"
+    }}</a>
+  </div>
   <!-- <fieldset class="rate">
     <input type="radio" id="rating10" name="rating" value="10" />
     <label for="rating10" title="5 stars"></label>

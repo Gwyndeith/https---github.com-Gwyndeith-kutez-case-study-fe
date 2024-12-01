@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { StarRatingComponent, StarRatingUtils } from 'angular-star-rating';
 
 @Component({
   selector: 'product-card',
@@ -9,8 +16,10 @@ export class ProductCardComponent implements OnInit {
   @Input() public product: any;
   public selectedImageURL: string = '';
   public selectedColor = 'Yellow';
+  public stars = [1, 2, 3, 4, 5];
+  @ViewChild('workaround') private starRating?: StarRatingComponent;
 
-  constructor() {}
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     let productImageList: any[] = [];
@@ -28,6 +37,14 @@ export class ProductCardComponent implements OnInit {
     console.log(productImageList);
     this.product.images = productImageList;
     this.selectedImageURL = Object.values(productImageList[0])[0] as string;
+
+    if (this.starRating) {
+      console.log(StarRatingUtils.getHalfStarVisible(4.5));
+      console.log(this.starRating);
+
+      this.starRating.setHalfStarVisible();
+      this.changeDetectorRef.detectChanges();
+    }
   }
 
   changeProductSelectedColor(selectedProductColor: string, index: number) {

@@ -14,6 +14,9 @@ export class ShopLayoutComponent implements OnInit {
 
   private subscriptions: Subscription = new Subscription();
 
+  private scrollInterval: any = null;
+  private isScrolling: boolean = false;
+
   constructor(
     private http: HttpClient,
     private productService: ProductService
@@ -29,5 +32,41 @@ export class ShopLayoutComponent implements OnInit {
         this.productList = productList;
       })
     );
+  }
+
+  startScrollLeft() {
+    if (this.isScrolling) return; // Avoid multiple intervals
+    this.isScrolling = true;
+    this.scrollInterval = setInterval(() => {
+      const scrollableDiv = document.querySelector(
+        '.product-list'
+      ) as HTMLElement;
+      scrollableDiv.scrollLeft -= 5; // Adjust speed by changing the value
+    }, 5); // Scroll every 10ms
+  }
+
+  startScrollRight() {
+    if (this.isScrolling) return;
+    this.isScrolling = true;
+    this.scrollInterval = setInterval(() => {
+      const scrollableDiv = document.querySelector(
+        '.product-list'
+      ) as HTMLElement;
+      scrollableDiv.scrollLeft += 5; // Adjust speed by changing the value
+    }, 5); // Scroll every 10ms
+  }
+
+  // Method to stop scrolling when mouse button is released
+  stopScroll() {
+    if (this.scrollInterval) {
+      clearInterval(this.scrollInterval); // Stop the scroll interval
+      this.scrollInterval = null;
+      this.isScrolling = false;
+    }
+  }
+
+  // Optional: Stop scrolling if the mouse leaves the button area
+  stopScrollOnMouseLeave() {
+    this.stopScroll();
   }
 }

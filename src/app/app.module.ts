@@ -11,6 +11,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatRippleModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProductService } from './services/product-service.service';
+import { StarRatingModule } from 'angular-star-rating';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,14 @@ import { ProductService } from './services/product-service.service';
     ShopLayoutComponent,
     ProductListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MatRippleModule, MatRadioModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatRippleModule,
+    MatRadioModule,
+    StarRatingModule.forRoot(),
+    MatButtonModule,
+  ],
   providers: [provideHttpClient(), provideAnimationsAsync(), ProductService],
   bootstrap: [AppComponent],
 })

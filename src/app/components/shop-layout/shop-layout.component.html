@@ -2,5 +2,37 @@
   <div class="title-container">
     <h1 style="font-family: 'Avenir'; font-size: 45px">Product List</h1>
   </div>
-  <product-list class="product-list" [productList]="productList"></product-list>
+  <div class="product-list-container">
+    <div class="left-chevron-container">
+      <button
+        mat-button
+        matRipple
+        (mousedown)="startScrollLeft()"
+        (mouseup)="stopScroll()"
+        (mouseleave)="stopScrollOnMouseLeave()"
+        style="overflow: hidden"
+      >
+        &#10094;
+      </button>
+      <!-- Left Chevron -->
+    </div>
+    <product-list
+      class="product-list"
+      [productList]="productList"
+    ></product-list>
+    <div class="right-chevron-container">
+      <button
+        mat-button
+        matRipple
+        (mousedown)="startScrollRight()"
+        (mouseup)="stopScroll()"
+        (mouseleave)="stopScrollOnMouseLeave()"
+        style="overflow: hidden"
+      >
+        &#10095;
+      </button>
+      <!-- Right Chevron -->
+      <button mat-button></button>
+    </div>
+  </div>
 </div>
